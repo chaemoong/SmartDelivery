@@ -1,8 +1,6 @@
 {
-    "apikey" : "2ERC1qHRfsfigqHNyyakPw",
-    "owner" : [
-        493068668805054464
-    ],
-    "prefix" : "..",
-    "token" : "NzM0NDA0NDg4MDY4MjAyNTU4.XxRQfg.TapO9iuSsn2QW3AW8dVOjkzMLqk"
-}
+    "apikey" : "https://tracking.sweettracker.co.kr/ 여기서 API키 발급 하신후 넣어주세요",
+    "owner" : [],
+    "prefix" : "PREFIX",
+    "token" : "TOKEN"
+} 
