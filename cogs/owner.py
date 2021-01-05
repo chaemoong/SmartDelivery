@@ -82,22 +82,6 @@ class Owner(Cog):
                 self._last_result = ret
                 await ctx.send('```py\n%s%s\n```' % (value, ret))
 
-    @command(pass_context=True, hidden=True, name='급식', no_pm=True)
-    @is_owner()
-    async def 급식(self, ctx):
-        name = '금구중학교'
-        neis = neispy.AsyncClient(KEY='f7311a5d4dd6469a8194401bfa864d0c')
-
-        scinfo = await neis.schoolInfo(SCHUL_NM=name)
-        AE = scinfo.ATPT_OFCDC_SC_CODE
-        SE = scinfo.SD_SCHUL_CODE
-        try:
-            scmeal = await neis.mealServiceDietInfo(AE, SE)
-        except:
-            return await ctx.send('DataNotFound: INFO-200 해당하는 데이터가 없습니다.')
-        meal = scmeal.DDISH_NM.replace('<br/>', '\n')
-        return await ctx.send(meal)
-
     @command(pass_context=True, hidden=True, name='reload')
     @is_owner()
     async def reload(self, ctx):
@@ -116,6 +100,19 @@ class Owner(Cog):
         if data.get('apikey') == None:
             data['apikey'] = ""
         data['apikey'] = key
+        module.save('settings.json', data)
+        return await ctx.send('성공적으로 업데이트 하였습니다!')
+
+    @command(pass_context=True, hidden=True, name='dbkrtoken')
+    @is_owner()
+    async def dbkrtoken(self, ctx, key=None):
+        if key == None:
+            return await ctx.send('키를 입력해주세요!')
+        await ctx.message.delete()
+        data = module.open('settings.json')
+        if data.get('dbkrtoken') == None:
+            data['dbkrtoken'] = ""
+        data['dbkrtoken'] = key
         module.save('settings.json', data)
         return await ctx.send('성공적으로 업데이트 하였습니다!')
 

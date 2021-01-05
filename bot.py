@@ -13,8 +13,12 @@ settings = module.open('settings.json')
 prefix = settings['prefix']
 owner = settings['owner']
 token = settings['token']
+dbkrtoken = settings['dbkrtoken']
 
 bot = Bot(command_prefix=prefix, owner_ids=owner)
+if not dbkrtoken == None:
+    from koreanbots import Client
+    client = Client(bot, dbkrtoken)
 
 @bot.event
 async def on_ready():

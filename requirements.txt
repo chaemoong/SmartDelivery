@@ -1,5 +1,6 @@
 pip
-git+git://github.com/Rapptz/discord.py.git#egg=discord.py[voice]
+discord.py==1.3.4
 datetime
 aiohttp
 requests
+koreanbots

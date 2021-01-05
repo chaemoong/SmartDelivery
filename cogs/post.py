@@ -97,7 +97,10 @@ class Post(Cog):
             return await msg.edit(embed=None, content='시간 초과로 인하여 취소되었습니다!')
         except:
             pass
-        await msg.delete()
+        try:
+            await msg.delete()
+        except:
+            pass
         code = string[number - 1]
         data = self.user
         data[str(ctx.author.id)].remove(code)
@@ -165,7 +168,10 @@ class Post(Cog):
                 return await msg.edit(embed=None, content='시간 초과로 인하여 취소되었습니다!')
         else:
             number = 1
-        await msg.delete()
+        try:
+            await msg.delete()
+        except:
+            pass
         if not number > num:
             code = string[number - 1][:2]
             송장 = string[number - 1][2:]
@@ -187,7 +193,8 @@ class Post(Cog):
                 data = await response.json() 
                 if not data.get('code') == None:
                     return data.get("msg")
-        status = {1: "배송준비중", 2: "집화완료", 3: "배송중", 4: "배송지 도착", 5: "배송출발", 6:"배송 완료"}
+        estimate = f"오늘 {data['estimate']}시 도착 예정"
+        status = {1: "배송준비중", 2: "집화완료", 3: "배송중", 4: "배송지 도착", 5: estimate, 6:"배송 완료"}
         color = {1:0xff4040 , 2: 0x3CB371, 3: 0x3CB371, 4: 0x3CB371, 5: 0x3CB371, 6: 0x50bcdf}
         sender = data['senderName']
         receiver = data['receiverName']
