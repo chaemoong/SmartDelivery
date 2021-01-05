@@ -118,7 +118,7 @@ class Post(Cog):
                 string.append(f"{i['Code']}")
                 string2 += f"{num}. {i['Name']}\n"
         if not string: return await ctx.send('검색된 택배회사가 없습니다!')
-        if not num == 1:
+        elif not num == 1:
             em = Embed(colour=0x3CB371, title='택배 회사 중복!')
             em.add_field(name='택배회사 중복이 발생하였습니다!', value=f"원하는 택배회사 코드를 적어주십시오,\n```{string2}```")
             msg = await ctx.send(embed=em)
